@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -16,7 +17,7 @@ import java.util.Date;
  * Created by 81046 on 2018-08-29
  */
 @Entity
-public class User {
+public class User implements Serializable{
     @Id //指定主键
     @GeneratedValue(strategy = GenerationType.AUTO) //主键自动增长
     private int id;
