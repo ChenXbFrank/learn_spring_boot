@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Hello HTML</title>
-    <script src="/test.js"></script>
+    <title>Index thymeleaf</title>
+    <link rel="stylesheet" href="/static/css/test.css"/>
+    <script src="/static/js/test.js"></script>
 </head>
 <body>
-    <H1>HELLO MY PAGE</H1>
+<h1>HELLO INDEX THYMELEAF</h1>
+你好，<h2 th:text="${name}"></h2>
+<p class="login-title">哈哈 NBA</p>
 </body>
 </html>

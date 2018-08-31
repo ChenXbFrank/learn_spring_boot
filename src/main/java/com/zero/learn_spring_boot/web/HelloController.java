@@ -5,6 +5,7 @@ import com.zero.learn_spring_boot.service.UserService;
 import com.zero.learn_spring_boot.service.UserServiceMyBatis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -85,7 +86,9 @@ public class HelloController {
     }*/
 
     @GetMapping("/helloHtml")
-    public String helloHtml(){
+    public String helloHtml(ModelMap map){
+        //返回值给页面
+        map.addAttribute("name", "小石潭记");
         return "hello";
     }
 }

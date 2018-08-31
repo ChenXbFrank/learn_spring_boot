@@ -17,9 +17,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +34,15 @@ import java.util.List;
 //下面是自动注入的时候，排除数据库
 //@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class LearnSpringBootApplication extends WebMvcConfigurationSupport{
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		//这是配置模板页面的路径   配置文件里面已经配置了  所以这里暂时不需要
+		//registry.addResourceHandler("/templates/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX+"/templates/");
+		//这里是配置静态资源文件的路径
+		registry.addResourceHandler("/static/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/static/");
+		super.addResourceHandlers(registry);
+	}
 
 	/**
 	 * 使用fastJson的方式一     需要  extends WebMvcConfigurationSupport
@@ -110,6 +121,5 @@ public class LearnSpringBootApplication extends WebMvcConfigurationSupport{
 	public static void main(String[] args) {
 		SpringApplication.run(LearnSpringBootApplication.class, args);
 	}
-
 
 }
